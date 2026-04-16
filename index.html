@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paletas — Desde imagen o portapapeles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="capa-fondo" aria-hidden="true"></div>
+
+  <header class="encabezado">
+    <h1 class="titulo">Paletas vivas</h1>
+    <p class="lema">Colores extraídos de una imagen: archivo o pegado desde el portapapeles.</p>
+  </header>
+
+  <main class="contenedor">
+    <section class="zona-carga" id="zona-carga" tabindex="0" aria-label="Zona para soltar imagen o pegar">
+      <input type="file" id="input-archivo" class="input-oculto" accept="image/*">
+      <div class="zona-inner">
+        <p class="zona-texto-principal">Arrastra una imagen aquí o elige un archivo</p>
+        <button type="button" class="btn" id="btn-archivo">Elegir imagen</button>
+        <p class="zona-texto-secundario">También puedes <strong>pegar</strong> con Ctrl+V o Cmd+V si copiaste una imagen.</p>
+      </div>
+    </section>
+
+    <p class="aviso" id="aviso" role="status" aria-live="polite"></p>
+
+    <section class="vista-previa" id="seccion-vista" hidden>
+      <div class="marco-imagen">
+        <img id="img-vista" alt="Vista previa de la imagen cargada">
+      </div>
+      <div class="acciones-mini">
+        <button type="button" class="btn-ghost" id="btn-otra">Usar otra imagen</button>
+      </div>
+    </section>
+
+    <section class="paletas" id="seccion-paletas" hidden>
+      <h2 class="subtitulo">Colores principales</h2>
+      <ul class="lista-colores" id="lista-colores"></ul>
+      <p class="pista-copia" id="pista-copia">Pulsa un color para copiar su código hexadecimal.</p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>Las imágenes se procesan en tu dispositivo; no se suben a ningún servidor.</p>
+  </footer>
+
+  <canvas id="canvas-trabajo" hidden></canvas>
+
+  <script src="app.js"></script>
+</body>
+</html>
