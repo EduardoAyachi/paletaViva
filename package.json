@@ -1,0 +1,21 @@
+{
+  "name": "paleta-viva",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "check": "node --check app.js && node --check palette-core.js && node --check katas/color-kata.js && node --check orm/paletteRepository.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "orm:generate": "prisma generate",
+    "orm:migrate": "prisma migrate dev",
+    "orm:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0"
+  },
+  "devDependencies": {
+    "jsdom": "^25.0.1",
+    "prisma": "^5.22.0",
+    "vitest": "^2.1.9"
+  }
+}

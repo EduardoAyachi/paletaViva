@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Palette {
+  id        Int            @id @default(autoincrement())
+  name      String
+  source    String?
+  createdAt DateTime       @default(now())
+  colors    PaletteColor[]
+}
+
+model PaletteColor {
+  id        Int     @id @default(autoincrement())
+  paletteId Int
+  hex       String
+  r         Int
+  g         Int
+  b         Int
+  position  Int
+  palette   Palette @relation(fields: [paletteId], references: [id], onDelete: Cascade)
+
+  @@index([paletteId])
+}

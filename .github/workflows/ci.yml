@@ -22,10 +22,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - name: Instalar dependencias
+        run: npm ci
       - name: Sintaxis JavaScript
-        run: node --check app.js
+        run: npm run check
+      - name: Pruebas unitarias
+        run: npm test
       - name: Archivos estáticos presentes
-        run: test -f index.html && test -f styles.css && test -f app.js
+        run: test -f index.html && test -f styles.css && test -f app.js && test -f palette-core.js
 
   deploy:
     needs: verify
@@ -44,7 +48,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Empaquetar sitio
-        run: mkdir -p _site && cp index.html styles.css app.js _site/
+        run: mkdir -p _site && cp index.html styles.css palette-core.js app.js _site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
